@@ -127,6 +127,8 @@ type ConsensusConfig struct {
 	BlockInterval       int64       `mapstructure:"blockinterval" description:"block production interval (sec)"`
 	Raft                *RaftConfig `mapstructure:"raft"`
 	NoTimeoutTxEviction bool        `mapstructure:"notte" description:"disable timeout tx eviction"`
+	// TODO temporal config
+	SyncBlkFetchSize   int           `mapstructure:"syncblkfetchsize" description:"size of block fetch"`
 }
 
 type RaftConfig struct {

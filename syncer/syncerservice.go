@@ -50,6 +50,10 @@ type SyncerConfig struct {
 
 	debugContext *SyncerDebug
 }
+func (sc *SyncerConfig) SetMaxBlockReqSize(size int) {
+	sc.maxBlockReqSize = size
+}
+
 type SyncerDebug struct {
 	t            *testing.T
 	expAncestor  int

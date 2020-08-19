@@ -136,6 +136,8 @@ func rootRun(cmd *cobra.Command, args []string) {
 	svrlog.Info().Str("revision", gitRevision).Str("branch", gitBranch).Msg("AERGO SVR STARTED")
 
 	configureZipkin()
+	syncerConf := syncer.SyncerCfg
+	syncerConf.SetMaxBlockReqSize(cfg.Consensus.SyncBlkFetchSize)
 
 	if cfg.EnableProfile {
 		svrlog.Info().Msgf("Enable Profiling on localhost: %d", cfg.ProfilePort)
@@ -158,7 +160,7 @@ func rootRun(cmd *cobra.Command, args []string) {
 	mpoolSvc := mempool.NewMemPoolService(cfg, chainSvc)
 	rpcSvc := rpc.NewRPC(cfg, chainSvc, githash)
 	admSvc := rpc.NewAdminService(cfg.RPC, compMng)
-	syncSvc := syncer.NewSyncer(cfg, chainSvc, nil)
+	syncSvc := syncer.NewSyncer(cfg, chainSvc, syncerConf)
 	p2pSvc := p2p.NewP2P(cfg, chainSvc)
 	pmapSvc := polarisclient.NewPolarisConnectSvc(cfg.P2P, p2pSvc)
 

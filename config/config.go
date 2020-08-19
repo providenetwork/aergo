@@ -154,6 +154,7 @@ func (ctx *ServerContext) GetDefaultMempoolConfig() *MempoolConfig {
 func (ctx *ServerContext) GetDefaultConsensusConfig() *ConsensusConfig {
 	return &ConsensusConfig{
 		BlockInterval: 1,
+		SyncBlkFetchSize: 100, // same as syncer.DfltBlockFetchSize
 	}
 }
 
