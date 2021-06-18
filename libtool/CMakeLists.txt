@@ -20,8 +20,8 @@ if(NOT EXISTS ${LMDB_SRC_DIR})
     execute_process(COMMAND git clone https://github.com/lmdb/lmdb.git ${LMDB_SRC_DIR})
 endif()
 
-set(GMP_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/gmp-6.1.2)
-set(GMP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/src/gmp-6.1.2)
+set(GMP_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/gmp-6.2.1)
+set(GMP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/src/gmp-6.2.1)
 
 include(ExternalProject)
 
